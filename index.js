@@ -1,8 +1,9 @@
 const eventRegister = ({ga, location}) => (
   selector,
   event,
-  {eventTracker, beforeCallback, afterCallback},
+  options = {},
 ) => {
+  const { eventTracker, beforeCallback, afterCallback } = options
   document.body.querySelectorAll(selector).forEach((ele, index) => {
     ele.addEventListener(event, () => {
       const id = ele.id || 'elements-' + String(index + 1)
@@ -11,7 +12,7 @@ const eventRegister = ({ga, location}) => (
       if (eventTracker instanceof Function) {
         return eventTracker(ga, ele, event, selector, label);
       }
-      defalutEventTracker(ga, ele, event, selector, label, {
+      defaultEventTracker(ga, ele, event, selector, label, {
         beforeCallback,
         afterCallback,
       });
@@ -19,7 +20,8 @@ const eventRegister = ({ga, location}) => (
   });
 };
 
-const defaultEventTracker = (ga, ele, eventAction, eventCategory, eventLabel) => {
+const defaultEventTracker = (ga, ele, eventAction, eventCategory, eventLabel, options) => {
+  const { beforeCallback, afterCallback } = options
   beforeCallback instanceof Function &&
     beforeCallback(ga, ele, eventAction, selector);
   const object = {
