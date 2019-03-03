@@ -1,0 +1,8 @@
+{
+  "name": "ga-event-tracker-on-site",
+  "version": "1.0.0",
+  "description": "register event tracking event on your site",
+  "main": "index.js",
+  "author": "version-1",
+  "license": "MIT"
+}
