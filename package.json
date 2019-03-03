@@ -4,5 +4,11 @@
   "description": "register event tracking event on your site",
   "main": "index.js",
   "author": "version-1",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "jest": "^24.1.0"
+  },
+  "scripts": {
+    "test": "jest"
+  }
 }
