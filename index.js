@@ -24,7 +24,7 @@ const eventRegister = ({ga, location}) => (
 const defaultEventTracker = (ga, ele, eventAction, eventCategory, eventLabel, options) => {
   const { beforeCallback, afterCallback } = options
   beforeCallback instanceof Function &&
-    beforeCallback(ga, ele, eventAction, selector);
+    beforeCallback(ga, ele, eventAction, eventLabel);
   const object = {
     eventAction,
     eventCategory,
@@ -32,7 +32,7 @@ const defaultEventTracker = (ga, ele, eventAction, eventCategory, eventLabel, op
   };
   ga('send', 'event', object);
   afterCallback instanceof Function &&
-    afterCallback(ga, ele, eventAction, selector);
+    afterCallback(ga, ele, object);
 };
 
 const batchEventRegister = ({ga, location}, selectors, event, options) =>
