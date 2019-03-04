@@ -8,11 +8,12 @@ const eventRegister = ({ga, location}) => (
     ele.addEventListener(event, () => {
       const id = ele.id || 'elements-' + String(index + 1)
       const label = location.href + '#' + id;
+      const eventCategory = selector.replace(/^\./, '').replace(/^#/, '')
 
       if (eventTracker instanceof Function) {
-        return eventTracker(ga, ele, event, selector, label);
+        return eventTracker(ga, ele, event, eventCategory, label);
       }
-      defaultEventTracker(ga, ele, event, selector, label, {
+      defaultEventTracker(ga, ele, event, eventCategory, label, {
         beforeCallback,
         afterCallback,
       });
